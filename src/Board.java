@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -7,8 +8,9 @@ public class Board {
     public static final String ALPHABET = "abcdefghijklmno";
     public static final String defaultCell = "░"; // u2591
     public static final String blankCell = " ";
-    //переменные для начальной и конечной координаты корабля
+    //переменные для начальной и конечной координаты корабля на поле
     private int endX, endY, beginX, beginY;
+    private int countOfCells;
     private String[][] board;
     //String defaultCell = "\u2587"; // = ▇
     //String defaultCell = "▇";
@@ -28,6 +30,22 @@ public class Board {
         }
     }
 
+    //установка кораблей на игровое поле
+    public void setShipsOnBoard(List<Ship> ships) {
+        int countTry = 0;
+        for (Ship ship : ships) {
+            do {
+                countTry++;
+                ship.setStartCell();
+            } while (getNeighbors(ship));
+            //загружаем корабли на поле и передаем этому кораблю индексы нахождения на поле
+            ship.setCells(setShipOnBoard(ship));
+            System.out.println(ship.getName() + " " + ship);
+            countOfCells = ship.length;
+        }
+        System.out.println("Количество итераций расстановки кораблей = " + countTry);
+    }
+
     public void cleanBoard() {
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
@@ -36,29 +54,30 @@ public class Board {
         }
     }
 
-    //печать игрового поля в консоли с маркировкой осей координат
-    public void printBoard(String prompt) {
-        //String ESC = "\033[";
-        //System.out.print(ESC + "2J");
-        //System.out.print("\033[H\033[J"); //очистка экрана
-        try {
-            Runtime.getRuntime().exec("cls");
-        } catch (Exception e) {
-            //System.out.println("Команда очистки консоли не сработала ...");
+    //печать игровых полей в консоли с маркировкой осей координат
+    public static void printBoards(String info, Board... boards) {
+        int numOfBoards = boards.length != 0 ? boards.length : 1;
+        String tabs = "     ";
+        String alpha = ALPHABET.substring(0, WIDTH).replace("", " ").toUpperCase();
+        System.out.println(info);
+        for (int i = 0; i < numOfBoards; i++) {
+            System.out.printf("   %s   %s", alpha, tabs);
         }
-
-        System.out.println(prompt);
-        String alpha = "  " + ALPHABET.substring(0, WIDTH).replace("", " ").toUpperCase();
-        System.out.println(alpha);
+        System.out.println();
         for (int i = 0; i < HEIGHT; i++) {
-            System.out.printf("%2d ", i + 1);
-            for (int j = 0; j < WIDTH; j++) {
-                System.out.printf("%s ", board[i][j]);
+            for (int k = 0; k < numOfBoards; k++) {
+                System.out.printf(" %2d", i + 1);
+                for (int j = 0; j < WIDTH; j++) {
+                    System.out.printf(" %s", boards[k].board[i][j]);
+                }
+                System.out.printf(" %-2d %s", (i + 1), tabs);
             }
-            System.out.print(i + 1);
             System.out.println();
         }
-        System.out.println(alpha);
+        for (int i = 0; i < numOfBoards; i++) {
+            System.out.printf("   %s   %s", alpha, tabs);
+        }
+        System.out.println();
     }
 
     //установка корабля на игровое поле, возвращает корабль с координатами поля
