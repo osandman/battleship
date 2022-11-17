@@ -1,9 +1,9 @@
-public enum shipFiles {
+public enum ShipFiles {
     MY("myships"),
     COMP("compships");
     private final String fname;
 
-    shipFiles(String fname) {
+    ShipFiles(String fname) {
         this.fname = fname;
     }
 

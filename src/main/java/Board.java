@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Board {
+    String boardName;
     public static final int HEIGHT = 10;
     public static final int WIDTH = 10;
     public static final String ALPHABET = "abcdefghijklmno";
@@ -21,7 +22,8 @@ public class Board {
     }
 
     //в конструкторе создаем двумерный массив строк и заполняем его строкой defaultCell;
-    public Board() {
+    public Board(String boardName) {
+        this.boardName = boardName;
         board = new String[HEIGHT][WIDTH];
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
@@ -60,10 +62,21 @@ public class Board {
         String tabs = "     ";
         String alpha = ALPHABET.substring(0, WIDTH).replace("", " ").toUpperCase();
         System.out.println(info);
+
+        //todo сделать кузяво вывод надписей --------------
+        String column1Format = "%-40s";
+        String formatInfo = column1Format + "\t";
+        for (int i = 0; i < numOfBoards; i++) {
+            System.out.format(formatInfo, boards[i].boardName);
+            //System.out.print(boards[i].boardName + tabs + tabs);
+        }
+        System.out.println();
         for (int i = 0; i < numOfBoards; i++) {
             System.out.printf("   %s   %s", alpha, tabs);
         }
         System.out.println();
+        // ---------------------------------
+
         for (int i = 0; i < HEIGHT; i++) {
             for (int k = 0; k < numOfBoards; k++) {
                 System.out.printf(" %2d", i + 1);

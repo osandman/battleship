@@ -12,7 +12,7 @@ public class CreateShips {
     private final List<Ship> newShips = new ArrayList<>();
     int countOfShipCells;
 
-    public CreateShips(shipFiles fNames) {
+    public CreateShips(ShipFiles fNames) {
         readNamesFromFile(fNames.toString());
         create();
     }
