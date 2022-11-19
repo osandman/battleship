@@ -7,8 +7,8 @@ public class Board {
     public static final int HEIGHT = 10;
     public static final int WIDTH = 10;
     public static final String ALPHABET = "abcdefghijklmno";
-    public static final String defaultCell = "░"; // u2591
-    public static final String blankCell = " ";
+    public static final String FOG_CELL = "░"; // u2591
+    public static final String CLEAN_CELL = " ";
     //переменные для начальной и конечной координаты корабля на поле
     private int endX, endY, beginX, beginY;
     private int countOfCells;
@@ -27,13 +27,12 @@ public class Board {
         board = new String[HEIGHT][WIDTH];
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                board[i][j] = defaultCell;
+                board[i][j] = FOG_CELL;
             }
         }
     }
-
     //установка кораблей на игровое поле
-    public void setShipsOnBoard(List<Ship> ships) {
+    public void trySetAllShipsOnBoard(List<Ship> ships) {
         int countTry = 0;
         for (Ship ship : ships) {
             do {
@@ -42,16 +41,16 @@ public class Board {
             } while (getNeighbors(ship));
             //загружаем корабли на поле и передаем этому кораблю индексы нахождения на поле
             ship.setCells(setShipOnBoard(ship));
-            System.out.println(ship.getName() + " " + ship);
+            //System.out.println(ship.getName() + " " + ship);
             countOfCells = ship.length;
         }
-        System.out.println("Количество итераций расстановки кораблей = " + countTry);
+        System.out.printf("Количество итераций расстановки кораблей %s = %d\n", this.boardName, countTry);
     }
 
     public void cleanBoard() {
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                board[i][j] = defaultCell;
+                board[i][j] = FOG_CELL;
             }
         }
     }
@@ -63,7 +62,7 @@ public class Board {
         String alpha = ALPHABET.substring(0, WIDTH).replace("", " ").toUpperCase();
         System.out.println(info);
 
-        //todo сделать кузяво вывод надписей --------------
+//todo сделать кузяво вывод надписей имен --------------
         String column1Format = "%-40s";
         String formatInfo = column1Format + "\t";
         for (int i = 0; i < numOfBoards; i++) {
@@ -115,10 +114,10 @@ public class Board {
     public boolean testShipOnBoard(Ship ship) {
         for (int i = 0; i < ship.length; i++) {
             if (ship.isHorizontal) {
-                if (!board[ship.startY][ship.startX + i].equals(defaultCell)) {
+                if (!board[ship.startY][ship.startX + i].equals(FOG_CELL)) {
                     return false;
                 }
-            } else if (!board[ship.startY + i][ship.startX].equals(defaultCell)) {
+            } else if (!board[ship.startY + i][ship.startX].equals(FOG_CELL)) {
                 return false;
             }
         }
@@ -130,7 +129,7 @@ public class Board {
         setArea(ship);
         for (int i = beginY; i <= endY; i++) {
             for (int j = beginX; j <= endX; j++) {
-                if (board[i][j].equals(defaultCell)) {
+                if (board[i][j].equals(FOG_CELL)) {
                     continue;
                 }
                 return true;

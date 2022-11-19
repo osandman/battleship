@@ -1,3 +1,5 @@
+import enums.ShipFiles;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -27,7 +29,6 @@ public class CreateShips {
             throw new RuntimeException(format("не найден файл \"%s\"!", fileName));
         }
     }
-
 
     private void create() {
         for (String name : shipNames) {

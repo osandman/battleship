@@ -1,8 +1,16 @@
+import enums.InputVar;
+import enums.ShipFiles;
+
 import java.util.List;
 import java.util.Map;
 
 public class Player {
-    String name;
+    private final String name;
+
+    public String getName() {
+        return name;
+    }
+
     int countOfGuess; //количество попыток выстрелов
     int countOfHitsAll; //количество попаданий по разным кораблям
     int countOfCells; //количество ячеек которые занимают корабли
@@ -11,33 +19,36 @@ public class Player {
     Board testBoard; //игровое поле на котором видны все корабли
     List<Ship> ships;
 
-    public Player(ShipFiles fname, String name) {
+    public Player(ShipFiles fileName, String name) {
         this.name = name;
-        CreateShips createShips = new CreateShips(fname);
+        CreateShips createShips = new CreateShips(fileName);
         ships = createShips.getNewShips();
-        countOfCells = createShips.countOfShipCells;
+        countOfCells = createShips.getCountOfShipCells();
         testBoard = new Board("Test " + name);
-        testBoard.setShipsOnBoard(ships);
+        testBoard.trySetAllShipsOnBoard(ships);
         board = new Board(name);
     }
+
     public String guessFromAnotherPlayer(Player anotherPlayer) {
-        String playerGuess = Features.getUserInput("Ход " + anotherPlayer.name + ". Введите координату выстрела:");
+        String playerGuess = Features.getUserInput("Ходит " + anotherPlayer.name +
+                ", введите координату выстрела (или \"q\" для выхода):", InputVar.HIT_GUESS);
         if (playerGuess.equals("q")) {
             return playerGuess;
         }
         BoardCoords coords = new BoardCoords(playerGuess);
-        boolean isHit = checkUserGuess(coords, anotherPlayer);
+        boolean isHit = checkPlayerGuess(coords, anotherPlayer);
         System.out.printf("После выстрела %s: попадание = %b, подбит корабль = %b, " +
                         "всего выстрелов = %d, попаданий = %d, всего ячеек кораблей = %d",
                 anotherPlayer.name, isHit, !currentShipIsAlive, anotherPlayer.countOfGuess, anotherPlayer.countOfHitsAll, countOfCells);
         if (!isHit) {
-            board.setCell(coords.y, coords.x, Board.blankCell); // в случае промаха ставим "молоко"
+            board.setCell(coords.y, coords.x, Board.CLEAN_CELL); // в случае промаха ставим "молоко"
             return "false";
         }
         return "true";
     }
-//todo все действия и переменные на другого игрока
-    private boolean checkUserGuess(BoardCoords coords, Player anotherPlayer) {
+
+    //todo все действия и переменные на другого игрока
+    private boolean checkPlayerGuess(BoardCoords coords, Player anotherPlayer) {
         anotherPlayer.countOfGuess++;
         String guessStr = String.valueOf(coords.y).concat(String.valueOf(coords.x));
         //System.out.println(guessStr);
@@ -61,14 +72,15 @@ public class Player {
         return false;
     }
 
-    /*
-Класс задает координаты ячейки поля в виде индексов массива x - номер строки, y - номер столбца
-Входной параметр конструктора - строка координата ячейки вида "A5" в соответствие с отображением на экране
- */
-    class BoardCoords {
+    /**
+     * Класс задает координаты ячейки поля в виде индексов массива x - номер строки, y - номер столбца
+     * Входной параметр конструктора - строка координата ячейки вида "A5" в соответствие с отображением на экране
+     */
+    static class BoardCoords {
         private int x; //координата x - номер столбца в массиве
         private int y; //координата y - номер строки в массиве
         private String strCoords;
+
         public BoardCoords(String strCoords) {
             this.strCoords = strCoords;
             this.x = Board.ALPHABET.indexOf(strCoords.substring(0, 1));
