@@ -46,7 +46,7 @@ public class Ship {
 
     @Override
     public String toString() {
-        return List.of(shipCells).toString();
+        return shipCells.values().toString();
     }
 
     public Map<String, String> getCells() {
