@@ -1,11 +1,13 @@
 D:\Oleg\Programming\Java\Battleship\src\main\java\CompPlayer.java
 D:\Oleg\Programming\Java\Battleship\src\main\java\Game.java
-D:\Oleg\Programming\Java\Battleship\src\main\java\Ship.java
 D:\Oleg\Programming\Java\Battleship\src\main\java\Main.java
-D:\Oleg\Programming\Java\Battleship\src\main\java\enums\EnvVar.java
 D:\Oleg\Programming\Java\Battleship\src\main\java\Features.java
+D:\Oleg\Programming\Java\Battleship\src\main\java\HumanPlayer.java
 D:\Oleg\Programming\Java\Battleship\src\main\java\enums\InputVar.java
+D:\Oleg\Programming\Java\Battleship\src\main\java\enums\ReturnStr.java
 D:\Oleg\Programming\Java\Battleship\src\main\java\Player.java
-D:\Oleg\Programming\Java\Battleship\src\main\java\Board.java
-D:\Oleg\Programming\Java\Battleship\src\main\java\enums\ShipFiles.java
 D:\Oleg\Programming\Java\Battleship\src\main\java\CreateShips.java
+D:\Oleg\Programming\Java\Battleship\src\main\java\Ship.java
+D:\Oleg\Programming\Java\Battleship\src\main\java\enums\EnvVar.java
+D:\Oleg\Programming\Java\Battleship\src\main\java\enums\MyFiles.java
+D:\Oleg\Programming\Java\Battleship\src\main\java\Board.java

@@ -31,6 +31,7 @@ public class Board {
             }
         }
     }
+
     //установка кораблей на игровое поле
     public void trySetAllShipsOnBoard(List<Ship> ships) {
         int countTry = 0;
@@ -63,11 +64,11 @@ public class Board {
         System.out.println(info);
 
 //todo сделать кузяво вывод надписей имен --------------
-        String column1Format = "%-40s";
-        String formatInfo = column1Format + "\t";
+        String column1Format = "%-28s";
+        String formatInfo = "    " + column1Format;
         for (int i = 0; i < numOfBoards; i++) {
             System.out.format(formatInfo, boards[i].boardName);
-            //System.out.print(boards[i].boardName + tabs + tabs);
+            //System.out.print(tabs + boards[i].boardName + tabs + tabs + tabs + tabs + tabs);
         }
         System.out.println();
         for (int i = 0; i < numOfBoards; i++) {

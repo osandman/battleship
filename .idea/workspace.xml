@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Battleship:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="95c955b1-5e3c-422a-935f-7a391893c8e1" name="Changes" comment="First add files to project">
+      <change afterPath="$PROJECT_DIR$/results" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HumanPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/enums/ReturnStr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CompPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CompPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CreateShips.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CreateShips.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Features.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Features.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/EnvVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/EnvVar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/InputVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/InputVar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/ShipFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/MyFiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Battleship-0.1.0-alpha.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Battleship-0.1.0-alpha.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CompPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CompPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CreateShips.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CreateShips.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Features.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Features.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Player$BoardCoords.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Player$BoardCoords.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/enums/EnvVar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/enums/EnvVar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/enums/InputVar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/enums/InputVar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/enums/ShipFiles.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/player1_ships" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/player2_ships" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="c:/Program Files/apache-maven-3.8.6" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2G2Z9mIftUOm8rT5QmFhk5fiKd7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Oleg/Programming/Java/Converter",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.editor"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Oleg\Programming\Java\Battleship" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Oleg\Programming\Java\Battleship" />
+      <recent name="D:\Oleg\Programming\Java\Battleship\src\main\java\resources" />
+      <recent name="D:\Oleg\Programming\Battleship\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Battleship" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Battleship" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="95c955b1-5e3c-422a-935f-7a391893c8e1" name="Changes" comment="" />
+      <created>1665588493386</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665588493386</updated>
+      <workItem from="1665588495274" duration="15605000" />
+      <workItem from="1666099393845" duration="224000" />
+      <workItem from="1666099690782" duration="2882000" />
+      <workItem from="1666102607296" duration="3073000" />
+      <workItem from="1666106179435" duration="920000" />
+      <workItem from="1666194675246" duration="1336000" />
+      <workItem from="1666201265253" duration="422000" />
+      <workItem from="1666517490807" duration="297000" />
+      <workItem from="1666895131244" duration="3450000" />
+      <workItem from="1666944542688" duration="7442000" />
+      <workItem from="1666961686467" duration="55000" />
+      <workItem from="1667981293341" duration="8516000" />
+      <workItem from="1668009967314" duration="731000" />
+      <workItem from="1668150995848" duration="294000" />
+      <workItem from="1668167019144" duration="3427000" />
+      <workItem from="1668171192263" duration="5694000" />
+      <workItem from="1668177137326" duration="547000" />
+      <workItem from="1668177729602" duration="3409000" />
+      <workItem from="1668192108082" duration="4469000" />
+      <workItem from="1668201940051" duration="60000" />
+      <workItem from="1668247407103" duration="61000" />
+      <workItem from="1668286166475" duration="138000" />
+      <workItem from="1668332515723" duration="177000" />
+      <workItem from="1668630845344" duration="732000" />
+      <workItem from="1668673369938" duration="39000" />
+      <workItem from="1668690688367" duration="12537000" />
+      <workItem from="1668779744088" duration="26000" />
+      <workItem from="1668873174064" duration="7282000" />
+      <workItem from="1668883432117" duration="5787000" />
+      <workItem from="1668961455309" duration="4691000" />
+      <workItem from="1668977486800" duration="666000" />
+      <workItem from="1669025265972" duration="1374000" />
+      <workItem from="1669121472998" duration="11554000" />
+    </task>
+    <task id="LOCAL-00001" summary="fixed issues in Game, Ship">
+      <created>1665594596419</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665594596419</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/src" />
+    </ignored-roots>
+    <MESSAGE value="First add files to project" />
+    <MESSAGE value="fixed issues in Game, Ship" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed issues in Game, Ship" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

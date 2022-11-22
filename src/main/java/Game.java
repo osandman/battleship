@@ -1,20 +1,26 @@
-import enums.InputVar;
-import enums.ShipFiles;
+import enums.MyFiles;
+import enums.ReturnStr;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Game {
     private final String finishString = "Игра окончена, все корабли потоплены!";
-    Player player1;
-    Player player2;
+    private Player player1;
+    private Player player2;
 
-    public Game() {
-        player1 = new Player(ShipFiles.PLAYER1_SHIPS, getPlayersName(1));
-        player2 = new Player(ShipFiles.PLAYER2_SHIPS, getPlayersName(2));
-        Board.printBoards("Корабли успешно расставлены в автоматическом режиме", player1.testBoard, player2.testBoard);
+    public Game(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+//        Board.printBoards("Корабли успешно расставлены в автоматическом режиме", player1.testBoard, player2.testBoard);
+        Board.printBoards("Корабли успешно расставлены в автоматическом режиме", player1.board, player2.board);
     }
 
-    private String getPlayersName(int playerNumber) {
-        return Features.getUserInput("Введите имя игрока №" + playerNumber, InputVar.NAME_INPUT);
-    }
+
 
     //игра продолжается пока не подбиты все корабли или не нажата q
     public void startPlaying() {
@@ -22,10 +28,9 @@ public class Game {
         Player currentPlayer = player1;
         Player anotherPlayer = player2;
         while (player1.countOfHitsAll < player1.countOfCells || player2.countOfHitsAll < player2.countOfCells) {
-            String playerGuess = anotherPlayer.guessFromAnotherPlayer(currentPlayer);
-            Board.printBoards("", player1.board, player2.board);
+            ReturnStr playerGuess = anotherPlayer.guessFromAnotherPlayer(currentPlayer);
             switch (playerGuess) {
-                case ("q"): {
+                case QUIT: {
                     for (Ship ship : player1.ships) {
                         player1.board.setShipOnBoard(ship);
                     }
@@ -34,7 +39,11 @@ public class Game {
                     }
                     finishGame("Игрок " + currentPlayer.getName() + " прервал игру", player1, player2);
                 }
-                case ("false"): {
+                case SHOW: {
+                    Board.printBoards("Открыты все корабли", player1.testBoard, player2.testBoard);
+                    break;
+                }
+                case FALSE: {
                     if (currentPlayer == player1) {
                         currentPlayer = player2;
                         anotherPlayer = player1;
@@ -44,15 +53,16 @@ public class Game {
                     }
                     break;
                 }
-                case ("true"): {
+                case TRUE: {
                     break;
                 }
             }
+            Board.printBoards("", player1.board, player2.board);
         }
         finishGame(finishString, player1, player2);
     }
 
-    public void finishGame(String finishString, Player... players) {
+    private void finishGame(String finishString, Player... players) {
         System.out.println(finishString);
         Board.printBoards("Открыты все корабли", players[0].board, players[1].board);
         for (Player player : players) {
@@ -64,6 +74,18 @@ public class Game {
             }
             System.out.println();
         }
+        File resFile = new File(MyFiles.RESULTS.toString());
+        Date dateNow = new Date();
+        SimpleDateFormat formatDateNow = new SimpleDateFormat(" dd.MM.yyyy (E)', время' HH.mm");
+        try (PrintWriter printWriter = new PrintWriter(resFile)) {
+            printWriter.println("Игра от " + formatDateNow.format(dateNow));
+            printWriter.printf("Игрок %s - %d попаданий\n", player1.getName(), player1.countOfHitsAll);
+            printWriter.printf("Игрок %s - %d попаданий", player2.getName(), player2.countOfHitsAll);
+            System.out.println("Результаты сохранены в файл");
+        } catch (IOException e) {
+            System.out.println("не найден файл для записи");
+        }
+
         System.exit(0);
     }
 }

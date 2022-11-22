@@ -1,8 +1,7 @@
-import enums.ShipFiles;
+import enums.MyFiles;
 
 public class CompPlayer extends Player {
-
-    public CompPlayer(ShipFiles fname, String name) {
+    public CompPlayer(MyFiles fname, String name) {
         super(fname, name);
     }
 }

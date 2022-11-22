@@ -1,11 +1,12 @@
 package enums;
 
-public enum ShipFiles {
+public enum MyFiles {
     PLAYER1_SHIPS("player1_ships"),
-    PLAYER2_SHIPS("player2_ships");
+    PLAYER2_SHIPS("player2_ships"),
+    RESULTS("results");
     private final String fileName;
 
-    ShipFiles(String fileName) {
+    MyFiles(String fileName) {
         this.fileName = fileName;
     }
 

@@ -1,10 +1,11 @@
+import enums.ReturnStr;
 import enums.InputVar;
-import enums.ShipFiles;
+import enums.MyFiles;
 
 import java.util.List;
 import java.util.Map;
 
-public class Player {
+public abstract class Player {
     private final String name;
 
     public String getName() {
@@ -19,7 +20,7 @@ public class Player {
     Board testBoard; //игровое поле на котором видны все корабли
     List<Ship> ships;
 
-    public Player(ShipFiles fileName, String name) {
+    public Player(MyFiles fileName, String name) {
         this.name = name;
         CreateShips createShips = new CreateShips(fileName);
         ships = createShips.getNewShips();
@@ -29,11 +30,15 @@ public class Player {
         board = new Board(name);
     }
 
-    public String guessFromAnotherPlayer(Player anotherPlayer) {
+    public ReturnStr guessFromAnotherPlayer(Player anotherPlayer) {
         String playerGuess = Features.getUserInput("Ходит " + anotherPlayer.name +
-                ", введите координату выстрела (или \"q\" для выхода):", InputVar.HIT_GUESS);
-        if (playerGuess.equals("q")) {
-            return playerGuess;
+                ", введите координату выстрела в формате \"A1\" (или \"q\" для выхода):", InputVar.HIT_GUESS);
+
+        if (playerGuess.equals(ReturnStr.QUIT.toString())){
+            return ReturnStr.QUIT;
+        }
+        if (playerGuess.equals(ReturnStr.SHOW.toString())){
+            return ReturnStr.SHOW;
         }
         BoardCoords coords = new BoardCoords(playerGuess);
         boolean isHit = checkPlayerGuess(coords, anotherPlayer);
@@ -42,9 +47,9 @@ public class Player {
                 anotherPlayer.name, isHit, !currentShipIsAlive, anotherPlayer.countOfGuess, anotherPlayer.countOfHitsAll, countOfCells);
         if (!isHit) {
             board.setCell(coords.y, coords.x, Board.CLEAN_CELL); // в случае промаха ставим "молоко"
-            return "false";
+            return ReturnStr.FALSE;
         }
-        return "true";
+        return ReturnStr.TRUE;
     }
 
     //todo все действия и переменные на другого игрока

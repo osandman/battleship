@@ -1,4 +1,4 @@
-import enums.ShipFiles;
+import enums.MyFiles;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ public class CreateShips {
     private final List<Ship> newShips = new ArrayList<>();
     int countOfShipCells;
 
-    public CreateShips(ShipFiles fNames) {
+    public CreateShips(MyFiles fNames) {
         readNamesFromFile(fNames.toString());
         create();
     }
