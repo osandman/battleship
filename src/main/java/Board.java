@@ -38,6 +38,10 @@ public class Board {
         for (Ship ship : ships) {
             do {
                 countTry++;
+                if (countTry > 500) {
+                    System.out.println("Не удается расставить корабли, уменьшите их количество или размеры в файлах");
+                    System.exit(0);
+                }
                 ship.setStartCell();
             } while (getNeighbors(ship));
             //загружаем корабли на поле и передаем этому кораблю индексы нахождения на поле
@@ -59,20 +63,19 @@ public class Board {
     //печать игровых полей в консоли с маркировкой осей координат
     public static void printBoards(String info, Board... boards) {
         int numOfBoards = boards.length != 0 ? boards.length : 1;
-        String tabs = "     ";
+        String tab = "    ";
         String alpha = ALPHABET.substring(0, WIDTH).replace("", " ").toUpperCase();
         System.out.println(info);
 
 //todo сделать кузяво вывод надписей имен --------------
-        String column1Format = "%-28s";
-        String formatInfo = "    " + column1Format;
+        String column1Format = "%-27s";
+        String formatInfo = tab + column1Format;
         for (int i = 0; i < numOfBoards; i++) {
             System.out.format(formatInfo, boards[i].boardName);
-            //System.out.print(tabs + boards[i].boardName + tabs + tabs + tabs + tabs + tabs);
         }
         System.out.println();
         for (int i = 0; i < numOfBoards; i++) {
-            System.out.printf("   %s   %s", alpha, tabs);
+            System.out.printf("   %s   %s", alpha, tab);
         }
         System.out.println();
         // ---------------------------------
@@ -83,12 +86,12 @@ public class Board {
                 for (int j = 0; j < WIDTH; j++) {
                     System.out.printf(" %s", boards[k].board[i][j]);
                 }
-                System.out.printf(" %-2d %s", (i + 1), tabs);
+                System.out.printf(" %-2d %s", (i + 1), tab);
             }
             System.out.println();
         }
         for (int i = 0; i < numOfBoards; i++) {
-            System.out.printf("   %s   %s", alpha, tabs);
+            System.out.printf("   %s   %s", alpha, tab);
         }
         System.out.println();
     }

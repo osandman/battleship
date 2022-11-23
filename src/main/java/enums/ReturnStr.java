@@ -5,8 +5,8 @@ public enum ReturnStr {
     SHOW("show"),
     HUMAN_GAME("1"),
     COMP_GAME("2"),
-    TRUE,
-    FALSE;
+    TRUE("да"),
+    FALSE("нет");
 
     private String inputStr;
 

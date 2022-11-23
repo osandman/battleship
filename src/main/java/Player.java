@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class Player {
-    private final String name;
+    private String name;
 
     public String getName() {
         return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     int countOfGuess; //количество попыток выстрелов
@@ -21,18 +24,18 @@ public abstract class Player {
     List<Ship> ships;
 
     public Player(MyFiles fileName, String name) {
-        this.name = name;
+        setName(name);
         CreateShips createShips = new CreateShips(fileName);
         ships = createShips.getNewShips();
         countOfCells = createShips.getCountOfShipCells();
-        testBoard = new Board("Test " + name);
+        testBoard = new Board("Test " + getName());
         testBoard.trySetAllShipsOnBoard(ships);
-        board = new Board(name);
+        board = new Board(getName());
     }
 
     public ReturnStr guessFromAnotherPlayer(Player anotherPlayer) {
-        String playerGuess = Features.getUserInput("Ходит " + anotherPlayer.name +
-                ", введите координату выстрела в формате \"A1\" (или \"q\" для выхода):", InputVar.HIT_GUESS);
+        String playerGuess = Features.getUserInput("Ходит " + anotherPlayer.getName() +
+                ", введите координату выстрела в формате \"a1...j10\" (или \"q\" для выхода):", InputVar.HIT_GUESS);
 
         if (playerGuess.equals(ReturnStr.QUIT.toString())){
             return ReturnStr.QUIT;
@@ -43,8 +46,8 @@ public abstract class Player {
         BoardCoords coords = new BoardCoords(playerGuess);
         boolean isHit = checkPlayerGuess(coords, anotherPlayer);
         System.out.printf("После выстрела %s: попадание = %b, подбит корабль = %b, " +
-                        "всего выстрелов = %d, попаданий = %d, всего ячеек кораблей = %d",
-                anotherPlayer.name, isHit, !currentShipIsAlive, anotherPlayer.countOfGuess, anotherPlayer.countOfHitsAll, countOfCells);
+                        "всего попыток = %d, попаданий = %d, всего ячеек кораблей = %d\n",
+                anotherPlayer.getName(), isHit, !currentShipIsAlive, anotherPlayer.countOfGuess, anotherPlayer.countOfHitsAll, countOfCells);
         if (!isHit) {
             board.setCell(coords.y, coords.x, Board.CLEAN_CELL); // в случае промаха ставим "молоко"
             return ReturnStr.FALSE;

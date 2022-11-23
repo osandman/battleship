@@ -26,6 +26,7 @@ public class Main {
         // TODO: 22.11.2022 переместить в цикл когда будет готов класс игрока компьютера
         Game game = new Game(new HumanPlayer(MyFiles.PLAYER1_SHIPS, getPlayersName(1)),
                 new HumanPlayer(MyFiles.PLAYER2_SHIPS, getPlayersName(2)));
+        System.out.println("Корабли успешно расставлены в автоматическом режиме");
         game.startPlaying();
 //        Player player1 = new Player(MyFiles.PLAYER1_SHIPS, "Oleg");
 //        Player player2 = new Player(MyFiles.PLAYER2_SHIPS, "Nastya");
@@ -39,6 +40,6 @@ public class Main {
         System.out.println();
     }
     private static String getPlayersName(int playerNumber) {
-        return Features.getUserInput("Введите имя игрока №" + playerNumber + " (от 1 до 20 символов)", InputVar.NAME_INPUT);
+        return Features.getUserInput("Введите имя игрока №" + playerNumber + " (от 1 до 12 символов)", InputVar.NAME_INPUT);
     }
 }
