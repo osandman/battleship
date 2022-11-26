@@ -1,3 +1,5 @@
+import enums.MyFiles;
+
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -12,7 +14,7 @@ public class Board {
     //переменные для начальной и конечной координаты корабля на поле
     private int endX, endY, beginX, beginY;
     private int countOfCells;
-    private String[][] board;
+    private final String[][] board;
     //String defaultCell = "\u2587"; // = ▇
     //String defaultCell = "▇";
     //String defaultCell = "O";
@@ -36,10 +38,17 @@ public class Board {
     public void trySetAllShipsOnBoard(List<Ship> ships) {
         int countTry = 0;
         for (Ship ship : ships) {
+            if (ship.length > (HEIGHT - 3)) {
+                System.out.println("Не могу расставить корабли, уменьшите размеры кораблей в файлах: " +
+                        MyFiles.PLAYER1_SHIPS + ", " + MyFiles.PLAYER2_SHIPS +
+                        " до " + (HEIGHT - 3) + " символов");
+                System.exit(0);
+            }
             do {
                 countTry++;
                 if (countTry > 500) {
-                    System.out.println("Не удается расставить корабли, уменьшите их количество или размеры в файлах");
+                    System.out.println("Не удается расставить корабли, уменьшите их количество или " +
+                            "размеры в файлах: " + MyFiles.PLAYER1_SHIPS + ", " + MyFiles.PLAYER2_SHIPS);
                     System.exit(0);
                 }
                 ship.setStartCell();

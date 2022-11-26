@@ -21,7 +21,7 @@ public class Game {
         Player anotherPlayer = player2;
         while (currentPlayer.countOfHitsAll < anotherPlayer.countOfCells) {
             currentPlayer.board.boardName = currentPlayer.getName();
-            anotherPlayer.board.boardName = anotherPlayer.getName() + "  ↓↓↓↓↓";
+            anotherPlayer.board.boardName = anotherPlayer.getName() + "  VVV";
             Board.printBoards("", player1.board, player2.board);
             ReturnStr playerGuess = anotherPlayer.guessFromAnotherPlayer(currentPlayer);
             switch (playerGuess) {
