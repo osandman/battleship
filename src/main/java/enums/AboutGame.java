@@ -1,6 +1,6 @@
 package enums;
 
-public enum EnvVar {
+public enum AboutGame {
     ABOUT ("This is the Battleship game."),
     AUTHOR ("Author: Ponomarev Oleg"),
     VERSION ("Version: 0.1.0-alpha");
@@ -11,7 +11,7 @@ public enum EnvVar {
     }
 
     private String variable;
-    EnvVar(String variable) {
+    AboutGame(String variable) {
         this.variable = variable;
     }
 }

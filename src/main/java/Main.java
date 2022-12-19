@@ -1,4 +1,4 @@
-import enums.EnvVar;
+import enums.AboutGame;
 import enums.MyFiles;
 import enums.ReturnStr;
 import enums.InputVar;
@@ -33,12 +33,13 @@ public class Main {
 
     }
 
-    private static void printAbout(){
-        System.out.println(EnvVar.ABOUT);
-        System.out.println(EnvVar.VERSION);
-        System.out.println(EnvVar.AUTHOR);
+    private static void printAbout() {
+        for (AboutGame aboutGame : AboutGame.values()) {
+            System.out.println(aboutGame);
+        }
         System.out.println();
     }
+
     private static String getPlayersName(int playerNumber) {
         return Features.getUserInput("Введите имя игрока №" + playerNumber + " (от 1 до 12 символов)", InputVar.NAME_INPUT);
     }

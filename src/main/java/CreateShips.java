@@ -7,30 +7,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.String.format;
-
 public class CreateShips {
-    private final List<String> shipNames = new ArrayList<>();
+    private List<String> shipNames = new ArrayList<>();
     private final List<Ship> newShips = new ArrayList<>();
-    int countOfShipCells;
+    private int countOfShipCells;
 
     public CreateShips(MyFiles fNames) {
-        readNamesFromFile(fNames.toString());
+        readNames(fNames);
         create();
     }
 
-    private void readNamesFromFile(String fileName) {
-        File file = new File(fileName);
+    private void readNames(MyFiles fileName) {
+        File file = new File(fileName.toString());
         try (Scanner scan = new Scanner(file)) {
             while (scan.hasNext()) {
                 shipNames.add(scan.nextLine());
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(format("не найден файл \"%s\"!", fileName));
+            shipNames = DefaultShipNames.getShipNames(fileName);
+            System.out.println("Не найден файл, взяты корабли по умолчанию");
         }
     }
 
     private void create() {
+        if (shipNames == null || shipNames.isEmpty()) {
+            throw new RuntimeException("Не могу заполнить список кораблей");
+        }
         for (String name : shipNames) {
             countOfShipCells += name.length();
             newShips.add(new Ship(name));

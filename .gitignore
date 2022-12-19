@@ -1,5 +1,5 @@
 # IntelliJ project
-.idea/
+.idea
 *.iml
-out/
-gen/
+out
+gen
